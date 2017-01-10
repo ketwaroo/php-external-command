@@ -1,0 +1,28 @@
+{
+    "name": "ketwaroo/php-external-command",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yaasir Ketwaroo",
+            "email": "608793+ketwaroo@users.noreply.github.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "ketwaroo/debug-helper": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ketwaroo\\": "src/Ketwaroo/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://satis.ketwaroo.com"
+        }
+    ]
+
+}
