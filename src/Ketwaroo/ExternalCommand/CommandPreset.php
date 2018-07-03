@@ -46,6 +46,7 @@ use TraitUtils;
     public function setCommand(Command $command)
     {
         $this->command = $command;
+        $this->presetApplied = false;
         return $this;
     }
 
