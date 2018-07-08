@@ -32,6 +32,7 @@ class OptionGroup
     protected $defaultOptionJoiner = ' ';
     protected $joiner              = ' ';
     protected $groupJoin           = ' ';
+    protected $argumentCounter     = 0;
 
     public function __construct($name)
     {
@@ -175,10 +176,10 @@ class OptionGroup
     {
 
         $opt = new Option(
-            $name
-            , $value
-            , $this->getOptionPrefix($prefix)
-            , $this->getOptionJoiner($joiner)
+                $name
+                , $value
+                , $this->getOptionPrefix($prefix)
+                , $this->getOptionJoiner($joiner)
         );
         if ($repeatable)
         {
@@ -195,6 +196,21 @@ class OptionGroup
     public function addRawOption($string)
     {
         return $this->pushOption($this->newOption($string, null, null, null));
+    }
+
+    /**
+     * 
+     * @param mixed $value
+     * @return static
+     */
+    public function addArgument($value)
+    {
+
+        $arg = new Argument($value);
+
+        $arg->setName('arg' . ( ++$this->argumentCounter));
+
+        return $this->pushOption($arg);
     }
 
     /**
@@ -232,8 +248,8 @@ class OptionGroup
     public function addOptionWithRawValue($name, $value = null, $prefix = null, $joiner = null)
     {
         return $this->pushOption(
-                $this->newOption($name, $value, $prefix, $joiner)
-                    ->setIsRawValue(true)
+                        $this->newOption($name, $value, $prefix, $joiner)
+                                ->setIsRawValue(true)
         );
     }
 
